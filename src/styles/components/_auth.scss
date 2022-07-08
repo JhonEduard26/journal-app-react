@@ -28,14 +28,16 @@
     outline-color: $primary;
   }
 }
-.auth__button {
-  width: 100%;
-  margin-bottom: $mb-8;
-  padding: 4px;
-  &:hover {
-    cursor: pointer;
-  }
-}
 .auth__social-media {
+  width: 100%;
   margin-bottom: $mb-16;
+  text-align: center;
+}
+.auth__text-media {
+  margin-bottom: $mb-8;
+}
+.auth__alert-error {
+  background-color: red;
+  border-radius: 6px;
+  color: white;
 }
