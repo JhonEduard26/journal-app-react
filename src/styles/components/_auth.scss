@@ -11,6 +11,7 @@
 }
 .auth__title {
   margin-bottom: $mb-16;
+  text-align: center;
   color: darken($color: $primary, $amount: 20);
 }
 .auth__form {
@@ -35,6 +36,7 @@
 }
 .auth__text-media {
   margin-bottom: $mb-8;
+  font-size: 0.875rem;
 }
 .auth__alert-error {
   background-color: red;
