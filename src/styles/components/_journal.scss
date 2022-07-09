@@ -1,5 +1,6 @@
 .journal__main-content {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr;
 }
 
 .journal__sidebar {
