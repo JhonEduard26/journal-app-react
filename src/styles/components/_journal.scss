@@ -1,0 +1,111 @@
+.journal__main-content {
+  display: flex;
+}
+
+.journal__sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  height: 100vh;
+  padding: 0 12px;
+  background-color: $dark-grey;
+  color: white;
+}
+
+.journal__sidebar-navbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: $mb-16;
+}
+
+.journal__new-entry {
+  cursor: pointer;
+
+  & i {
+    margin-bottom: $mb-8;
+  }
+
+  & p {
+    margin-bottom: $mb-16;
+  }
+
+  &:hover {
+    color: darken($color: white, $amount: 20);
+  }
+}
+
+.journal__entries {
+  overflow-y: scroll;
+}
+
+.contenedor {
+  margin: 2rem auto;
+  border: 1px solid #aaa;
+  height: 300px;
+  width: 90%;
+  max-width: 400px;
+  background: #f1f2f3;
+  overflow: auto;
+  box-sizing: border-box;
+  padding: 0 1rem;
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+::-webkit-scrollbar:vertical {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #797979;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+.journal__entry {
+  cursor: pointer;
+  display: flex;
+  margin-bottom: $mb-16;
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: white;
+  color: $dark-grey;
+}
+
+.journal__entry-picture {
+  width: 72px;
+  height: 72px;
+  background-image: url(https://images.pexels.com/photos/163084/typewriter-vintage-old-vintage-typewriter-163084.jpeg?auto=compress&cs=tinysrgb&w=600);
+  background-position: center;
+  background-size: cover;
+}
+
+.journal__entry-body {
+  padding: 8px;
+}
+
+.journal__entry-title {
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+.journal__entry-content {
+  font-size: 0.675rem;
+}
+
+.journal__entry-date-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+
+  & span {
+    font-size: 0.675rem;
+  }
+}

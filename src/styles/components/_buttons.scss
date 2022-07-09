@@ -9,17 +9,32 @@
   font-weight: 700;
   color: white;
 }
+
+.button--inline-flex {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  background: transparent;
+  border: 0;
+  font-weight: 700;
+  color: white;
+}
+
 .button--primary {
   background-color: $primary;
   border-radius: 4px;
+
   &:disabled {
     cursor: default;
     background-color: lighten($color: $primary, $amount: 20);
   }
+
   &:hover {
     background-color: darken($color: $primary, $amount: 10);
   }
 }
+
 .google-btn {
   transition: box-shadow .3s;
   cursor: pointer;
@@ -29,19 +44,23 @@
   background-color: $google-blue;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+
   .google-icon-wrapper {
     width: 48px;
     height: 100%;
     border-radius: 2px;
     background-color: $white;
   }
+
   .btn-text {
     color: $white;
     font-size: 14px;
   }
+
   &:hover {
     box-shadow: 0 0 6px $google-blue;
   }
+
   &:active {
     background: $button-active-blue;
   }

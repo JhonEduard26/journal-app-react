@@ -3,41 +3,49 @@
   height: 100vh;
   background-color: $primary;
 }
+
 .auth__container {
   padding: 16px;
   border-radius: 4px;
   box-shadow: 0 2px $dark-grey;
   background-color: whitesmoke;
 }
+
 .auth__title {
   margin-bottom: $mb-16;
   text-align: center;
   color: darken($color: $primary, $amount: 20);
 }
+
 .auth__form {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 280px;
 }
+
 .auth__input {
   margin-bottom: $mb-8;
   padding: 4px;
   width: 100%;
-  color:$dark-grey;
+  color: $dark-grey;
+
   &:focus {
     outline-color: $primary;
   }
 }
+
 .auth__social-media {
   width: 100%;
   margin-bottom: $mb-16;
   text-align: center;
 }
+
 .auth__text-media {
   margin-bottom: $mb-8;
   font-size: 0.875rem;
 }
+
 .auth__alert-error {
   background-color: red;
   border-radius: 6px;
