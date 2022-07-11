@@ -11,6 +11,7 @@
 }
 
 .button--inline-flex {
+  cursor: pointer;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -19,6 +20,10 @@
   border: 0;
   font-weight: 700;
   color: white;
+
+  &:hover {
+    color: darken($color: white, $amount: 10);
+  }
 }
 
 .button--primary {
