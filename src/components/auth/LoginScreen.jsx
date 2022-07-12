@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { login } from '../../actions/auth'
+import { getUser, login } from '../../actions/auth'
 import { useForm } from '../../hooks/useForm'
 
 export const LoginScreen = () => {
@@ -17,7 +17,7 @@ export const LoginScreen = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(login('f2io2e', 'Jhon'))
+    dispatch(getUser(email, password))
   }
 
   return (
