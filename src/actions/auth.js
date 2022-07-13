@@ -1,4 +1,5 @@
 import { types } from "../types/types"
+import { GoogleAuthProvider } from "firebase/auth";
 import {
   auth,
   googleProvider,
@@ -7,21 +8,23 @@ import {
   signInWithEmailAndPassword,
   updateProfile
 } from '../firebase/config'
-import { GoogleAuthProvider } from "firebase/auth";
+import { finishLoading, startLoading } from "./ui";
 
 export const startEmailPasswordLogin = (email, password) => {
   return (dispatch) => {
+    dispatch(startLoading())
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
+      .then(({ user }) => {
         dispatch(login(user.uid, user.displayName))
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+        const errorCode = error.code
+        const errorMessage = error.message
         console.log(errorCode)
-      });
+      })
+      .finally(() => {
+        dispatch(finishLoading())
+      })
   }
 }
 
