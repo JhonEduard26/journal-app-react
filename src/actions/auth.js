@@ -1,5 +1,5 @@
 import { types } from "../types/types"
-import { auth, googleProvider, signInWithPopup } from '../firebase/config'
+import { auth, googleProvider, signInWithPopup, createUserWithEmailAndPassword } from '../firebase/config'
 import { GoogleAuthProvider } from "firebase/auth";
 
 export const getUser = () => {
@@ -28,6 +28,24 @@ export const startGoogleLogin = () => {
         const email = error.customData.email;
         // The AuthCredential type that was used.
         const credential = GoogleAuthProvider.credentialFromError(error);
+      });
+  }
+}
+
+export const startEmailPasswordNameLogin = (email, password, name) => {
+  return (dispatch) => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user
+        user.displayName = name
+        console.log(user)
+        dispatch(login(user.uid, user.displayName))
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode)
       });
   }
 }
