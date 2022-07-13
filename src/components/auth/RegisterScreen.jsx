@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
 import { removeError, setError } from '../../actions/ui'
 import { useDispatch, useSelector } from 'react-redux'
-import { startEmailPasswordNameLogin } from '../../actions/auth'
+import { startRegisterEmailPasswordName } from '../../actions/auth'
 
 export const RegisterScreen = () => {
 
@@ -25,7 +25,7 @@ export const RegisterScreen = () => {
     e.preventDefault()
 
     if (isFormValid()) {
-      dispatch(startEmailPasswordNameLogin(email, password, name))
+      dispatch(startRegisterEmailPasswordName(email, password, name))
     }
   }
 

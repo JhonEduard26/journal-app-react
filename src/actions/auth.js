@@ -1,12 +1,27 @@
 import { types } from "../types/types"
-import { auth, googleProvider, signInWithPopup, createUserWithEmailAndPassword } from '../firebase/config'
+import {
+  auth,
+  googleProvider,
+  signInWithPopup,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile
+} from '../firebase/config'
 import { GoogleAuthProvider } from "firebase/auth";
 
-export const getUser = () => {
+export const startEmailPasswordLogin = (email, password) => {
   return (dispatch) => {
-    setTimeout(() => {
-      dispatch(login('f23adf', 'Jhon'))
-    }, 2000);
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        dispatch(login(user.uid, user.displayName))
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode)
+      });
   }
 }
 
@@ -32,20 +47,20 @@ export const startGoogleLogin = () => {
   }
 }
 
-export const startEmailPasswordNameLogin = (email, password, name) => {
+export const startRegisterEmailPasswordName = (email, password, name) => {
   return (dispatch) => {
     createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
+      .then(async (userCredential) => {
         // Signed in
         const user = userCredential.user
-        user.displayName = name
-        console.log(user)
+        await updateProfile(user, {
+          displayName: name,
+        })
         dispatch(login(user.uid, user.displayName))
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode)
       });
   }
 }
