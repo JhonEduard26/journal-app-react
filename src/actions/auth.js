@@ -1,5 +1,6 @@
 import { types } from "../types/types"
-import { GoogleAuthProvider } from "firebase/auth";
+import Swal from 'sweetalert2'
+import { GoogleAuthProvider, signOut } from "firebase/auth";
 import {
   auth,
   googleProvider,
@@ -17,10 +18,13 @@ export const startEmailPasswordLogin = (email, password) => {
       .then(({ user }) => {
         dispatch(login(user.uid, user.displayName))
       })
-      .catch((error) => {
-        const errorCode = error.code
-        const errorMessage = error.message
-        console.log(errorCode)
+      .catch(() => {
+        Swal.fire({
+          title: 'Error de autenticación',
+          text: 'El usuario o contraseña son incorrectos',
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        })
       })
       .finally(() => {
         dispatch(finishLoading())
@@ -61,9 +65,13 @@ export const startRegisterEmailPasswordName = (email, password, name) => {
         })
         dispatch(login(user.uid, user.displayName))
       })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+      .catch(() => {
+        Swal.fire({
+          title: 'Error',
+          text: 'Correo electronico ya está en uso',
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        })
       });
   }
 }
@@ -74,4 +82,15 @@ export const login = (uid, displayName) => ({
     uid,
     displayName,
   }
+})
+
+export const startLogout = () => {
+  return async (dispatch) => {
+    await signOut(auth)
+    dispatch(logout())
+  }
+}
+
+const logout = () => ({
+  type: types.logout
 })

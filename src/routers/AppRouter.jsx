@@ -5,6 +5,8 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { JournalScreen } from '../components/journal/JournalScreen'
 import { AuthRouter } from './AuthRouter'
 import { login } from '../actions/auth';
+import { PrivateRoute } from './PrivateRoute';
+import { PublicRoute } from './PublicRoute';
 
 export const AppRouter = () => {
   const dispatch = useDispatch()
@@ -34,8 +36,21 @@ export const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<JournalScreen />} />
-        <Route path='/auth/*' element={<AuthRouter />} />
+        <Route
+          path='/'
+          element={
+            <PrivateRoute logged={isLoggedIn}>
+              <JournalScreen />
+            </PrivateRoute>
+          } />
+        <Route
+          path='/auth/*'
+          element={
+            <PublicRoute logged={isLoggedIn}>
+              <AuthRouter />
+            </PublicRoute>
+          }
+        />
         <Route path='*' element={<h1>404 Not found</h1>} />
       </Routes>
     </BrowserRouter>
