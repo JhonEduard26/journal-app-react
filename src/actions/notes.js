@@ -18,6 +18,7 @@ export const startNewNote = () => {
       const docRef = await addDoc(collection(db, `${uid}`, ...['journal', 'notes']), newNote)
       console.log("Document written with ID: ", docRef.id);
       dispatch(activeNote(docRef.id, newNote))
+      dispatch(addNewNote(docRef.id, newNote))
     } catch (e) {
       console.error("Error adding document: ", e);
     }
@@ -31,6 +32,14 @@ export const activeNote = (id, note) => ({
   payload: {
     id,
     ...note
+  }
+})
+
+export const addNewNote = (id, note) => ({
+  type: types.notesAddNew,
+  payload: {
+    id,
+    ...note,
   }
 })
 
@@ -90,4 +99,8 @@ export const startDeleting = (id) => {
 const deleteNote = (id) => ({
   type: types.notesDelete,
   payload: id
+})
+
+export const notesLogout = () => ({
+  type: types.notesLogoutCleaning
 })

@@ -10,6 +10,7 @@ import {
   updateProfile
 } from '../firebase/config'
 import { finishLoading, startLoading } from "./ui";
+import { notesLogout } from "./notes";
 
 export const startEmailPasswordLogin = (email, password) => {
   return (dispatch) => {
@@ -88,6 +89,7 @@ export const startLogout = () => {
   return async (dispatch) => {
     await signOut(auth)
     dispatch(logout())
+    dispatch(notesLogout())
   }
 }
 

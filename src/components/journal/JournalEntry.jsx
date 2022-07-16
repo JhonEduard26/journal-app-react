@@ -17,7 +17,7 @@ export const JournalEntry = ({ id, createdAt, body, title, urlImg }) => {
   }
 
   return (
-    <div className='journal__entry' onClick={handleEntryClick}>
+    <div className='journal__entry animate__animated animate__fadeInDown' onClick={handleEntryClick}>
       {
         !!urlImg &&
         <div
