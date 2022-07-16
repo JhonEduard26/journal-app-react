@@ -26,6 +26,16 @@
   }
 }
 
+.button--danger {
+  border-radius: 6px;
+  background-color: red;
+  color: white;
+
+  &:hover {
+    background-color: darken($color: red, $amount: 10);
+  }
+}
+
 .button--primary {
   background-color: $primary;
   border-radius: 4px;

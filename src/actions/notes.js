@@ -1,4 +1,4 @@
-import { addDoc, collection, doc, updateDoc } from "firebase/firestore"
+import { addDoc, collection, doc, updateDoc, deleteDoc } from "firebase/firestore"
 import Swal from "sweetalert2"
 import { db } from "../firebase/config"
 import { loadNotes } from "../helpers/loadNotes"
@@ -70,4 +70,24 @@ const refreshNote = (id, note) => ({
       ...note
     }
   }
+})
+
+
+export const startDeleting = (id) => {
+  return async (dispatch, getState) => {
+    const { uid } = getState().auth
+
+    try {
+      await deleteDoc(doc(db, `${uid}`, ...['journal', 'notes', `${id}`]));
+      dispatch(deleteNote(id))
+    } catch (e) {
+      console.error("Error deleting document: ", e);
+    }
+
+  }
+}
+
+const deleteNote = (id) => ({
+  type: types.notesDelete,
+  payload: id
 })

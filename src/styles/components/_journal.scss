@@ -55,7 +55,9 @@
 .journal__entry {
   cursor: pointer;
   display: flex;
+  justify-content: space-between;
   margin-bottom: $mb-16;
+  padding: 0 6px;
   overflow: hidden;
   border-radius: 4px;
   background-color: white;
