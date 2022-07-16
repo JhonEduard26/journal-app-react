@@ -52,23 +52,6 @@
   padding: 0 1rem;
 }
 
-::-webkit-scrollbar {
-  -webkit-appearance: none;
-}
-
-::-webkit-scrollbar:vertical {
-  width: 8px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #797979;
-  border-radius: 20px;
-}
-
-::-webkit-scrollbar-track {
-  border-radius: 10px;
-}
-
 .journal__entry {
   cursor: pointer;
   display: flex;

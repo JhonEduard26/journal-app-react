@@ -1,17 +1,29 @@
+import { useDispatch } from 'react-redux'
 import moment from 'moment'
+import { activeNote } from '../../actions/notes'
 
-export const JournalEntry = ({ id, date, body, title, urlImg }) => {
+export const JournalEntry = ({ id, createdAt, body, title, urlImg }) => {
 
-  const noteDate = moment(date)
+  const dispatch = useDispatch()
+
+  const noteDate = moment(createdAt)
+
+  const handleEntryClick = () => {
+    dispatch(activeNote(id, {
+      title,
+      body,
+      createdAt
+    }))
+  }
 
   return (
-    <div className='journal__entry'>
+    <div className='journal__entry' onClick={handleEntryClick}>
       {
         !!urlImg &&
         <div
           className='journal__entry-picture'
           style={{
-            backgroundImage: `url(${url})`,
+            backgroundImage: `url(${urlImg})`,
             backgroundSize: 'cover'
           }}
         ></div>

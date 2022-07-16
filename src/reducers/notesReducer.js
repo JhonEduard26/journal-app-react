@@ -1,18 +1,3 @@
-/*
-  {
-    notes: [],
-    active: null,
-    active: {
-      id: 'fes34esfsefse3r3rs',
-      title: '',
-      body: '',
-      imageUrl: 'https://myimage',
-      date: 123232432432,
-
-    }
-  }
-*/
-
 import { types } from "../types/types"
 
 const initialState = {
@@ -28,12 +13,20 @@ export const notesReducer = (state = initialState, action) => {
         active: {
           ...action.payload
         }
-
       }
     case types.notesLoad:
       return {
         ...state,
-        notes: [...action.payload]
+        notes: action.payload
+      }
+    case types.notesUpdated:
+      return {
+        ...state,
+        notes: state.notes.map(
+          note => note.id === action.payload.id
+            ? action.payload.note
+            : note
+        )
       }
     default:
       return state

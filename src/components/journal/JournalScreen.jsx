@@ -1,4 +1,3 @@
-import React from 'react'
 import { useSelector } from 'react-redux'
 import { NoteScreen } from '../notes/NoteScreen'
 import { NothingSelected } from './NothingSelected'
